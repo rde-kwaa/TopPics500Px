@@ -35,7 +35,7 @@
             BlueprintIdentifier = "942D63C71FB9D89000F5F60A"
             BuildableName = "Top500Px.app"
             BlueprintName = "Top500Px"
-            ReferencedContainer = "container:Top500Px.xcodeproj">
+            ReferencedContainer = "container:TopPics500Px.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -58,7 +58,7 @@
             BlueprintIdentifier = "942D63C71FB9D89000F5F60A"
             BuildableName = "Top500Px.app"
             BlueprintName = "Top500Px"
-            ReferencedContainer = "container:Top500Px.xcodeproj">
+            ReferencedContainer = "container:TopPics500Px.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
