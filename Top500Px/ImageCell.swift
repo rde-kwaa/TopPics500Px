@@ -29,14 +29,11 @@ class ImageCell: BaseCell {
         didSet {
             titleLabel.text = image?.title
             
-            //bannerImageView.image = UIImage(named: (image?.imageBanner)!)
+            setupBannerImage()
             
-            if let profileImageName = image?.photographer?.profileImage {
-                userImageView.image = UIImage(named: profileImageName)
-            }
+            setupProfileImage()
             
             if let photographerName = image?.photographer?.name {
-                
                 let subtitleText = "\(photographerName)"
                 authorTextView.text = subtitleText
             }
@@ -53,8 +50,18 @@ class ImageCell: BaseCell {
                     titleLabelHeightConstraint?.constant = 20
                 }
             }
-            
-            
+        }
+    }
+    
+    func setupProfileImage() {
+        if let profileImageUrl = image?.photographer?.profileImage {
+            userImageView.loadImageUsingUrlString(profileImageUrl)
+        }
+    }
+    
+    func setupBannerImage() {
+        if let imageUrl = image?.imageBanner {
+            bannerImageView.loadImageUsingUrlString(imageUrl)
         }
     }
     
@@ -83,16 +90,16 @@ class ImageCell: BaseCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Sunrise in Bavaria"
-        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
+        //label.text = "Sunrise in Bavaria"
+        label.numberOfLines = 2
         return label
     }()
     
     let authorTextView: UITextView = {
         let textView = UITextView()
-        textView.text =  "Daniel F."
         textView.translatesAutoresizingMaskIntoConstraints = false
+        //textView.text =  "Daniel F."
         textView.textContainerInset = UIEdgeInsetsMake(0, -4, 0, 0)
         textView.textColor = UIColor.lightGray
         return textView
@@ -121,16 +128,16 @@ class ImageCell: BaseCell {
         // title right constraint
         addConstraints([NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal, toItem: bannerImageView, attribute: .right, multiplier: 1, constant: 0)])
         // title height constraint
-        addConstraints([NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20)])
+        addConstraints([NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 44)])
         
         // photographer top constraint
-        addConstraints([NSLayoutConstraint(item: authorTextView, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 8)])
+        addConstraints([NSLayoutConstraint(item: authorTextView, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 4)])
         // photographer left constraint
         addConstraints([NSLayoutConstraint(item: authorTextView, attribute: .left, relatedBy: .equal, toItem: userImageView, attribute: .right, multiplier: 1, constant: 8)])
         // photographer right constraint
         addConstraints([NSLayoutConstraint(item: authorTextView, attribute: .right, relatedBy: .equal, toItem: bannerImageView, attribute: .right, multiplier: 1, constant: 0)])
         // photographer height constraint
-        addConstraints([NSLayoutConstraint(item: authorTextView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20)])
+        addConstraints([NSLayoutConstraint(item: authorTextView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 30)])
     }
     
 }
