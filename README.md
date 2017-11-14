@@ -5,11 +5,11 @@
 </p>
 
 
-
-Displays the most popular photos from the Canadian-Based website 500Px.com. 
-Data serialisation with JSON.
-Updating and Refreshing functions to come as of 15/11/2017.
-
+<br> </br>
+<p align= "center">Displays the most popular photos from the Canadian-Based website 500Px.com.</p>
+<p align= "center">Data serialisation with JSON.</p>
+<p align= "center">Updating and Refreshing functions to come as of 15/11/2017.</p>
+<br> </br>
 
 
 <p align="center">
