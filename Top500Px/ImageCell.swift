@@ -29,7 +29,7 @@ class ImageCell: BaseCell {
         didSet {
             titleLabel.text = image?.title
             
-            bannerImageView.image = UIImage(named: (image?.imageBanner)!)
+            //bannerImageView.image = UIImage(named: (image?.imageBanner)!)
             
             if let profileImageName = image?.photographer?.profileImage {
                 userImageView.image = UIImage(named: profileImageName)

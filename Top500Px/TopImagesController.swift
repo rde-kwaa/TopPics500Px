@@ -8,44 +8,68 @@
 
 import UIKit
 
-struct topPics {
-    let imageURL: String
-    let title: String
-    let photographer: String
-    let profile: String
-}
-
 class TopImagesController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var images: [Image] = {
-        var userDaniel = Photographer()
-        userDaniel.name = "Daniel F."
-        userDaniel.profileImage = "photographerDaniel"
+    var images: [Image]?
+    
+    func getImages() {
         
-        var himImage = Image()
-        himImage.title = "Sunrise in Bavaria"
-        himImage.imageBanner = "topImage"
-        return [himImage]
-    }()
+        let consumerKey = "q89i18uOtcklwE2S1XqMjXY9Li4shDrVQzLTGUVq"
+        let jsonUrlString = "https://api.500px.com/v1/photos?feature=popular&consumer_key=\(consumerKey)"
+        let url = URL(string: jsonUrlString)
+        
+        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+            
+            if error != nil {
+                print("Error: \(String(describing: error))")
+                return
+            }
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: Any]
+                    let photos = json["photos"] as! [[String:Any]]
+                    let item = photos[0] as [String:Any]
+                    let imageUrl = item["image_url"]
+                    let title = item["name"]
+                    let user = item["user"] as! [String:Any]
+                    let fullname = user["fullname"]
+                    let userPicUrl = user["userpic_https_url"]
+                    print(imageUrl as Any)
+                    print(title as Any)
+                    print(fullname as Any)
+                    print(userPicUrl as Any)
+                    
+                    self.images = [Image]()
+                    
+                    //for dictionary in json {
+                    
+                        let image = Image()
+                        //image.title = dictionary["name"] as? String
+                        //image.imageBanner = dictionary["image_url"] as? String
+                        
+                        //let channelDictionary = dictionary["channel"] as! [String: AnyObject]
+                        
+                        //let photographer = Photographer()
+                        //photographer.name = channelDictionary["fullname"] as? String
+                        //photographer.profileImage = channelDictionary["userpic_https_url"] as? String
+                        
+                        //image.photographer = photographer
+                        
+                        //self.images?.append(image)
+                    //}
+                    
+                    self.collectionView?.reloadData()
+                    
+                } catch let jsonErr {
+                    print("Attempt at serializing JSON caused an error: ", jsonErr)
+                    return
+                }
+        }).resume()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let consumerKey = "q89i18uOtcklwE2S1XqMjXY9Li4shDrVQzLTGUVq"
-//        let jsonUrlString = "https://api.500px.com/v1/photos?feature=popular&consumer_key=\(consumerKey)"
-//        let url = URL(string: jsonUrlString)
-//
-//        URLSession.shared.dataTask(with: url!) { (data, response, err) in
-//
-//            guard let data = data else { return }
-//
-//            do {
-//                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-//                print(json)
-//            } catch let jsonErr {
-//                print("Attempt at serializing JSON caused an error: ", jsonErr)
-//            }
-//        }.resume()
+        getImages()
         
         navigationItem.title = "Popular"
         collectionView?.backgroundColor = UIColor.white
@@ -55,14 +79,14 @@ class TopImagesController: UICollectionViewController, UICollectionViewDelegateF
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return images?.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! ImageCell
         
-        // cell.video = videos[indexPath.item]
+        cell.image = images?[indexPath.item]
         
         return cell
     }
