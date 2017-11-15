@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "942D63C71FB9D89000F5F60A"
-               BuildableName = "Top500Px.app"
-               BlueprintName = "Top500Px"
-               ReferencedContainer = "container:Top500Px.xcodeproj">
+               BlueprintIdentifier = "945CB3191FBC243C00EFE70B"
+               BuildableName = "TopPics500Px.app"
+               BlueprintName = "TopPics500Px"
+               ReferencedContainer = "container:TopPics500Px.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "942D63C71FB9D89000F5F60A"
-            BuildableName = "Top500Px.app"
-            BlueprintName = "Top500Px"
+            BlueprintIdentifier = "945CB3191FBC243C00EFE70B"
+            BuildableName = "TopPics500Px.app"
+            BlueprintName = "TopPics500Px"
             ReferencedContainer = "container:TopPics500Px.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -55,9 +55,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "942D63C71FB9D89000F5F60A"
-            BuildableName = "Top500Px.app"
-            BlueprintName = "Top500Px"
+            BlueprintIdentifier = "945CB3191FBC243C00EFE70B"
+            BuildableName = "TopPics500Px.app"
+            BlueprintName = "TopPics500Px"
             ReferencedContainer = "container:TopPics500Px.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "942D63C71FB9D89000F5F60A"
-            BuildableName = "Top500Px.app"
-            BlueprintName = "Top500Px"
-            ReferencedContainer = "container:Top500Px.xcodeproj">
+            BlueprintIdentifier = "945CB3191FBC243C00EFE70B"
+            BuildableName = "TopPics500Px.app"
+            BlueprintName = "TopPics500Px"
+            ReferencedContainer = "container:TopPics500Px.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
