@@ -68,15 +68,15 @@ class ImageCell: BaseCell {
     
     let bannerImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "topImage")
-        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: "stockImage")
+        imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
     }()
     
     let userImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "photographerDaniel")
+        imageView.image = UIImage(named: "stockPhotographer")
         imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true
         return imageView
@@ -102,6 +102,7 @@ class ImageCell: BaseCell {
         //textView.text =  "Daniel F."
         textView.textContainerInset = UIEdgeInsetsMake(0, -4, 0, 0)
         textView.textColor = UIColor.lightGray
+        textView.isEditable = false
         return textView
     }()
     
@@ -122,7 +123,7 @@ class ImageCell: BaseCell {
         addConstraintsWithFormat(format: "V:|-16-[v0]-8-[v1(44)]-36-[v2(1)]|", views: bannerImageView, userImageView, separatorView)
         
         // title top constraint
-        addConstraints([NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal, toItem: bannerImageView, attribute: .bottom, multiplier: 1, constant: 8)])
+        addConstraints([NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal, toItem: bannerImageView, attribute: .bottom, multiplier: 1, constant: 4)])
         // title left constraint
         addConstraints([NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal, toItem: userImageView, attribute: .right, multiplier: 1, constant: 8)])
         // title right constraint

@@ -11,6 +11,8 @@ import UIKit
 class TopImagesController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var images: [Image]?
+    var height: [CGFloat] = []
+    var width: [CGFloat] = []
     
     func getImages() {
         
@@ -27,16 +29,21 @@ class TopImagesController: UICollectionViewController, UICollectionViewDelegateF
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: Any]
                     var photos = json["photos"] as! [[String:Any]]
-                    var index = 1
+                    var index = 0
                     
                     self.images = [Image]()
                     
-                    while index<18 {
+                    while index<19 {
                         let image = Image()
-                        
+                        print("\n\(index): \n \n \(photos[index])")
                         let item = photos[index] as [String:Any]
                         image.title = item["name"] as? String
                         image.imageBanner = item["image_url"] as? String
+                        
+                        let imgHeight = item["height"] as! CGFloat
+                        let imgWidth = item["width"] as! CGFloat
+                        self.height.append(imgHeight)
+                        self.width.append(imgWidth)
                         
                         let user = item["user"] as! [String:Any]
                         let photographer = Photographer()
@@ -65,12 +72,12 @@ class TopImagesController: UICollectionViewController, UICollectionViewDelegateF
         navigationItem.title = "Popular"
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(ImageCell.self, forCellWithReuseIdentifier: "cellID")
-        collectionView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        //collectionView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        //collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7//images?.count ?? 0
+        return images?.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -83,8 +90,10 @@ class TopImagesController: UICollectionViewController, UICollectionViewDelegateF
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = (view.frame.width - 16 - 16) * 9 / 16
-        return CGSize(width: view.frame.width, height: height + 16 + 88)
+        
+        let cellIndex = indexPath.row
+        let dynHeight = (view.frame.width - 16 - 16) / (width[cellIndex] / height[cellIndex])
+        return CGSize(width: view.frame.width, height: dynHeight + 16 + 88)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

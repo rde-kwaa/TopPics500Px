@@ -13,7 +13,6 @@
 		945CB34E1FBC252800EFE70B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945CB3481FBC252800EFE70B /* Extensions.swift */; };
 		945CB34F1FBC252800EFE70B /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945CB3491FBC252800EFE70B /* Image.swift */; };
 		945CB3501FBC252800EFE70B /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945CB34A1FBC252800EFE70B /* ImageCell.swift */; };
-		945CB3511FBC252800EFE70B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 945CB34B1FBC252800EFE70B /* Info.plist */; };
 		945CB3521FBC252800EFE70B /* TopImagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945CB34C1FBC252800EFE70B /* TopImagesController.swift */; };
 		94F94AB31FBC26DB00E0A1A8 /* Assests.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F94AB21FBC26DB00E0A1A8 /* Assests.xcassets */; };
 /* End PBXBuildFile section */
@@ -65,7 +64,7 @@
 				945CB3581FBC25FD00EFE70B /* Controller */,
 				945CB3561FBC25F600EFE70B /* Model */,
 				945CB3571FBC25F900EFE70B /* Views */,
-				945CB3551FBC25E800EFE70B /* Extensions */,
+				945CB3551FBC25E800EFE70B /* Auxiliary */,
 				945CB3211FBC243C00EFE70B /* Main.storyboard */,
 				945CB3261FBC243C00EFE70B /* LaunchScreen.storyboard */,
 				94F94AB21FBC26DB00E0A1A8 /* Assests.xcassets */,
@@ -74,12 +73,12 @@
 			path = TopPics500Px;
 			sourceTree = "<group>";
 		};
-		945CB3551FBC25E800EFE70B /* Extensions */ = {
+		945CB3551FBC25E800EFE70B /* Auxiliary */ = {
 			isa = PBXGroup;
 			children = (
 				945CB3481FBC252800EFE70B /* Extensions.swift */,
 			);
-			name = Extensions;
+			name = Auxiliary;
 			sourceTree = "<group>";
 		};
 		945CB3561FBC25F600EFE70B /* Model */ = {
@@ -167,7 +166,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				945CB3511FBC252800EFE70B /* Info.plist in Resources */,
 				945CB3281FBC243C00EFE70B /* LaunchScreen.storyboard in Resources */,
 				94F94AB31FBC26DB00E0A1A8 /* Assests.xcassets in Resources */,
 				945CB3231FBC243C00EFE70B /* Main.storyboard in Resources */,
