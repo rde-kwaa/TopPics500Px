@@ -7,11 +7,11 @@
 
 <br> </br>
 <p align= "center">Displays the most popular photos from the Canadian-Based website 500Px.com.</p>
-<p align= "center">Data serialisation with JSON.</p>
-<p align= "center">Updating and Refreshing functions to come as of 15/11/2017.</p>
+<p align= "center">Project incorporates data serialisation with JSON</p>
+<p align= "center">Allows for Refreshing to update to the latest most popular images.</p>
 <br> </br>
 
 
 <p align="center">
-  <img width="300" height="534" src="/Screenshots/Simulator Screen Shot.png">
+  <img width="300" height="534" src="/Screenshots/Simulator Screen Shot 1.png">
 </p>
