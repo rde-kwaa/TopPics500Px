@@ -66,16 +66,16 @@ class ImageCell: BaseCell {
     }
     
     
-    let bannerImageView: UIImageView = {
-        let imageView = UIImageView()
+    let bannerImageView: CustomImageView = {
+        let imageView = CustomImageView()
         imageView.image = UIImage(named: "stockImage")
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
     }()
     
-    let userImageView: UIImageView = {
-        let imageView = UIImageView()
+    let userImageView: CustomImageView = {
+        let imageView = CustomImageView()
         imageView.image = UIImage(named: "stockPhotographer")
         imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true
