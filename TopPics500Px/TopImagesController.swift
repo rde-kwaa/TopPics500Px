@@ -75,15 +75,28 @@ class TopImagesController: UICollectionViewController, UICollectionViewDelegateF
         
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
         titleLabel.text = "Popular"
-        titleLabel.textAlignment = .center
         titleLabel.textColor = UIColor.white
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         navigationItem.titleView = titleLabel
         
-        
         navigationController?.navigationBar.isTranslucent = false
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(ImageCell.self, forCellWithReuseIdentifier: "cellID")
+        
+        setupNavBarButtons()
+    }
+    
+    func setupNavBarButtons() {
+        let refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
+        refreshButton.tintColor = UIColor.white
+        navigationItem.rightBarButtonItems = [refreshButton]
+    }
+    
+    func refresh() {
+        getImages()
+        DispatchQueue.main.async(execute: {
+            self.collectionView?.reloadData()
+        })
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
