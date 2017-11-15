@@ -33,9 +33,9 @@ class ImageCell: BaseCell {
             
             setupProfileImage()
             
-            if let photographerName = image?.photographer?.name {
+            if let photographerName = self.image?.photographer?.name {
                 let subtitleText = "\(photographerName)"
-                authorTextView.text = subtitleText
+                self.authorTextView.text = subtitleText
             }
             
             //measure title text
@@ -47,7 +47,7 @@ class ImageCell: BaseCell {
                 if estimatedRect.size.height > 20 {
                     titleLabelHeightConstraint?.constant = 44
                 } else {
-                    titleLabelHeightConstraint?.constant = 20
+                    titleLabelHeightConstraint?.constant = 22
                 }
             }
         }
@@ -93,6 +93,7 @@ class ImageCell: BaseCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         //label.text = "Sunrise in Bavaria"
         label.numberOfLines = 2
+        //label.backgroundColor = UIColor.cyan
         return label
     }()
     
@@ -102,7 +103,9 @@ class ImageCell: BaseCell {
         //textView.text =  "Daniel F."
         textView.textContainerInset = UIEdgeInsetsMake(0, -4, 0, 0)
         textView.textColor = UIColor.lightGray
-        textView.isEditable = false
+        //textView.isSelectable = false
+        //textView.backgroundColor = UIColor.cyan
+        //textView.isEditable = false
         return textView
     }()
     
@@ -117,20 +120,16 @@ class ImageCell: BaseCell {
         
         //horizontal contsraints
         addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: bannerImageView)
-        addConstraintsWithFormat(format: "H:|-16-[v0(44)]|", views: userImageView)
+        addConstraintsWithFormat(format: "H:|-16-[v0(44)]-8-[v1]-16-|", views: userImageView, titleLabel)
         addConstraintsWithFormat(format: "H:|[v0]|", views: separatorView)
         //vertical constraints
-        addConstraintsWithFormat(format: "V:|-16-[v0]-8-[v1(44)]-36-[v2(1)]|", views: bannerImageView, userImageView, separatorView)
+        addConstraintsWithFormat(format: "V:|-16-[v0]-4-[v1(44)]-50-[v2(1)]|", views: bannerImageView, userImageView, separatorView)
         
         // title top constraint
         addConstraints([NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal, toItem: bannerImageView, attribute: .bottom, multiplier: 1, constant: 4)])
-        // title left constraint
-        addConstraints([NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal, toItem: userImageView, attribute: .right, multiplier: 1, constant: 8)])
-        // title right constraint
-        addConstraints([NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal, toItem: bannerImageView, attribute: .right, multiplier: 1, constant: 0)])
         // title height constraint
         addConstraints([NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 44)])
-        
+
         // photographer top constraint
         addConstraints([NSLayoutConstraint(item: authorTextView, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 4)])
         // photographer left constraint

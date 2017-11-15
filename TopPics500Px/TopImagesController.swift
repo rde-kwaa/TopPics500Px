@@ -24,18 +24,20 @@ class TopImagesController: UICollectionViewController, UICollectionViewDelegateF
             
             if error != nil {
                 print("Error: \(String(describing: error))")
+                let alertController = UIAlertController(title: (error?.localizedDescription), message: "", preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: ("OK"), style: .default)
+                alertController.addAction(defaultAction)
+                self.present(alertController, animated: true, completion: nil)
                 return
             }
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: Any]
                     var photos = json["photos"] as! [[String:Any]]
                     var index = 0
-                    
                     self.images = [Image]()
                     
-                    while index<19 {
+                    while !(index==20) {
                         let image = Image()
-                        print("\n\(index): \n \n \(photos[index])")
                         let item = photos[index] as [String:Any]
                         image.title = item["name"] as? String
                         image.imageBanner = item["image_url"] as? String
@@ -56,7 +58,9 @@ class TopImagesController: UICollectionViewController, UICollectionViewDelegateF
                         index += 1
                     }
                     
-                    self.collectionView?.reloadData()
+                    DispatchQueue.main.async(execute: {
+                        self.collectionView?.reloadData()
+                    })
                     
                 } catch let jsonErr {
                     print("Attempt at serializing JSON caused an error: ", jsonErr)
@@ -69,11 +73,17 @@ class TopImagesController: UICollectionViewController, UICollectionViewDelegateF
         
         getImages()
         
-        navigationItem.title = "Popular"
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
+        titleLabel.text = "Popular"
+        titleLabel.textAlignment = .center
+        titleLabel.textColor = UIColor.white
+        titleLabel.font = UIFont.systemFont(ofSize: 20)
+        navigationItem.titleView = titleLabel
+        
+        
+        navigationController?.navigationBar.isTranslucent = false
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(ImageCell.self, forCellWithReuseIdentifier: "cellID")
-        //collectionView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        //collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -92,8 +102,8 @@ class TopImagesController: UICollectionViewController, UICollectionViewDelegateF
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let cellIndex = indexPath.row
-        let dynHeight = (view.frame.width - 16 - 16) / (width[cellIndex] / height[cellIndex])
-        return CGSize(width: view.frame.width, height: dynHeight + 16 + 88)
+        let dynHeight = (view.frame.width - 32) / (width[cellIndex] / height[cellIndex])
+        return CGSize(width: view.frame.width, height: dynHeight + 16 + 98)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
