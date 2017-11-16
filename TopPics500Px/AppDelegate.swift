@@ -19,19 +19,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
+        // initialise collection view layout and make TopImageController the rootViewController
         let layout = UICollectionViewFlowLayout()
         window?.rootViewController = UINavigationController(rootViewController: TopImagesController(collectionViewLayout: layout))
         
+        //match status bar colour
         UINavigationBar.appearance().barTintColor = UIColor.rgb(45, green: 45, blue: 45)
         
-        // get rid of black bar underneath navbar
+        // get rid of black bar underneath navigation bar
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         
+        // custom status bar
         let statusBarBackgroundView = UIView()
         statusBarBackgroundView.backgroundColor = UIColor.rgb(45, green: 45, blue: 45)
         UIApplication.shared.statusBarStyle = .lightContent
 
+        // add status bar subview and add constraints
         window?.addSubview(statusBarBackgroundView)
         window?.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)
         window?.addConstraintsWithFormat(format: "V:|[v0(20)]", views: statusBarBackgroundView)

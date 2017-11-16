@@ -8,6 +8,8 @@
 
 import UIKit
 
+// simple model object class that meets the basic needs to parse the json information
+
 class Image: NSObject {
     var imageBanner: String?
     var title: String?
