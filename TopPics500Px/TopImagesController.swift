@@ -92,7 +92,7 @@ class TopImagesController: UICollectionViewController, UICollectionViewDelegateF
         navigationItem.rightBarButtonItems = [refreshButton]
     }
     
-    func refresh() {
+    @objc func refresh() {
         getImages()
         DispatchQueue.main.async(execute: {
             self.collectionView?.reloadData()
