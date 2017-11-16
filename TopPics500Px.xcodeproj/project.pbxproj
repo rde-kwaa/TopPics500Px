@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		945CB3281FBC243C00EFE70B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 945CB3261FBC243C00EFE70B /* LaunchScreen.storyboard */; };
 		945CB34D1FBC252800EFE70B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945CB3471FBC252800EFE70B /* AppDelegate.swift */; };
-		945CB34E1FBC252800EFE70B /* Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945CB3481FBC252800EFE70B /* Custom.swift */; };
+		945CB34E1FBC252800EFE70B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945CB3481FBC252800EFE70B /* Extensions.swift */; };
 		945CB34F1FBC252800EFE70B /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945CB3491FBC252800EFE70B /* Image.swift */; };
 		945CB3501FBC252800EFE70B /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945CB34A1FBC252800EFE70B /* ImageCell.swift */; };
 		945CB3521FBC252800EFE70B /* TopImagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945CB34C1FBC252800EFE70B /* TopImagesController.swift */; };
@@ -20,7 +20,7 @@
 		945CB31A1FBC243C00EFE70B /* TopPics500Px.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopPics500Px.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		945CB3271FBC243C00EFE70B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		945CB3471FBC252800EFE70B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		945CB3481FBC252800EFE70B /* Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Custom.swift; sourceTree = "<group>"; };
+		945CB3481FBC252800EFE70B /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		945CB3491FBC252800EFE70B /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		945CB34A1FBC252800EFE70B /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		945CB34B1FBC252800EFE70B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 		945CB3551FBC25E800EFE70B /* Auxiliary */ = {
 			isa = PBXGroup;
 			children = (
-				945CB3481FBC252800EFE70B /* Custom.swift */,
+				945CB3481FBC252800EFE70B /* Extensions.swift */,
 			);
 			name = Auxiliary;
 			sourceTree = "<group>";
@@ -179,7 +179,7 @@
 				945CB3501FBC252800EFE70B /* ImageCell.swift in Sources */,
 				945CB34F1FBC252800EFE70B /* Image.swift in Sources */,
 				945CB3521FBC252800EFE70B /* TopImagesController.swift in Sources */,
-				945CB34E1FBC252800EFE70B /* Custom.swift in Sources */,
+				945CB34E1FBC252800EFE70B /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
