@@ -13,5 +13,5 @@
 
 
 <p align="center">
-  <img width="300" height="534" src="/Screenshots/Simulator Screen Shot 1.png">
+  <img width="300" height="534" src="/Screenshots/Simulator Screen Shot.png">
 </p>
