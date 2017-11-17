@@ -1,7 +1,7 @@
 <h1 align= "center">  TopPics500Px</h1>
 
 <p align="center">
-  <img width="200" height="200" src="/Screenshots/AppIcon.png">
+  <img width="150" height="150" src="/Screenshots/AppIcon.png">
 </p>
 
 
