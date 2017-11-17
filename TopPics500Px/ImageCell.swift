@@ -27,12 +27,12 @@ class ImageCell: BaseCell {
 
     var image: Image? {
         didSet {
-            titleLabel.text = image?.title
-            
             setupBannerImage()
-            
             setupProfileImage()
             
+            // set title of image (uilabel)
+            titleLabel.text = image?.title
+            // casts the object attribute of photographer naem into the text view
             if let photographerName = self.image?.photographer?.name {
                 let subtitleText = "\(photographerName)"
                 self.authorTextView.text = subtitleText
@@ -53,6 +53,8 @@ class ImageCell: BaseCell {
         }
     }
     
+    // setup image whenever focussed or brought into view. If already fetched from url, fetches from image cache
+    
     func setupProfileImage() {
         if let profileImageUrl = image?.photographer?.profileImage {
             userImageView.loadImageUsingUrlString(profileImageUrl)
@@ -65,23 +67,28 @@ class ImageCell: BaseCell {
         }
     }
     
-    
+    // image view for the main image, type CustomImageView as I tailored it for images fetched from urls
     let bannerImageView: CustomImageView = {
         let imageView = CustomImageView()
         imageView.image = UIImage(named: "stockImage")
+        // fits according to aspect ratio so as to not cut the image short
         imageView.contentMode = .scaleAspectFit
+        // image confined to bounds of view
         imageView.clipsToBounds = true
         return imageView
     }()
     
+    // custom image view for the photographer's image
     let userImageView: CustomImageView = {
         let imageView = CustomImageView()
         imageView.image = UIImage(named: "stockPhotographer")
+        // rounding a square until it becomes a perfect circle (corner radius half length of square)
         imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true
         return imageView
     }()
     
+    // basic view for the separator line between cells
     let separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
@@ -90,27 +97,26 @@ class ImageCell: BaseCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
+        // defaults to true when views created programmatically, as I am using autolayout and then
+        // providing a non ambiguous, nonconflicting set of constraints for the view
         label.translatesAutoresizingMaskIntoConstraints = false
-        //label.text = "Sunrise in Bavaria"
         label.numberOfLines = 2
-        //label.backgroundColor = UIColor.cyan
         return label
     }()
     
+    // create the text view for the subtitle (photographer's name)
     let authorTextView: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        //textView.text =  "Daniel F."
+        // so text is not cut short on the left
         textView.textContainerInset = UIEdgeInsetsMake(0, -4, 0, 0)
         textView.textColor = UIColor.lightGray
-        //textView.isSelectable = false
-        //textView.backgroundColor = UIColor.cyan
-        //textView.isEditable = false
         return textView
     }()
     
     var titleLabelHeightConstraint: NSLayoutConstraint?
     
+    // subviews added and constraints initialised
     override func setupViews() {
         addSubview(bannerImageView)
         addSubview(separatorView)
